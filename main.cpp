@@ -129,7 +129,8 @@ public:
             int* current_links = get_links_from(current);
             for(int i = 0; i < num_of_links_from[current]; i++){
                 int neighbour = current_links[i];
-                if(check_fired(neighbour)){
+                cout << get_title(current) << " --> " << get_title(neighbour) << endl;
+                if(!check_fired(neighbour)){
                     set_fired(neighbour);
                     bfs_queue.push(neighbour);
                     shortest_from[neighbour] = current;
@@ -156,7 +157,7 @@ public:
 int main(){
     WikiGraph graph("wiki_small.txt");
     string page1, page2;
-    cout << graph.get_title(161);
+    cout << graph.get_title(161) << endl;
     cin >> page1 >> page2;
     graph.shortest_path(page1, page2);
     return 0;
